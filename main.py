@@ -12,8 +12,23 @@ def get_timezone():
   password = data.get("password")
   device = data.get("device")
   client = aminofix.Client(device)
-  client.login(email = login, password = password)
-  return f"{client.sid}"
+  try:
+    client.login(email = login, password = password)
+    return f"{client.sid}"
+  except:
+    try:
+      client.login(email = login, password = password)
+      return f"{client.sid}"
+    except:
+      try:
+        client.login(email = login, password = password)
+        return f"{client.sid}"
+      except:
+        try:
+          client.login(email = login, password = password)
+          return f"{client.sid}"
+        except Exception as g:
+          print(f"Não foi possivel realizar o login, pelo erro: {g}")
 
 if __name__ == '__main__':
   app.run("0.0.0.0", 3050)
