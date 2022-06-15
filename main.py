@@ -1,6 +1,7 @@
 from flask import *
 import os
 import aminofix
+import random
 os.system('set FLASK_ENV=development')
 app = Flask(__name__)
 
@@ -31,4 +32,4 @@ def get_timezone():
           print(f"Não foi possivel realizar o login, pelo erro: {g}")
 
 if __name__ == '__main__':
-  app.run("0.0.0.0", 3050)
+  app.run("0.0.0.0", random.randint(2000, 9000))
