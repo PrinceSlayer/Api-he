@@ -2,3 +2,4 @@ amino.fix
 requests
 flask
 gunicorn
+heroku3
