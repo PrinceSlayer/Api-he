@@ -5,7 +5,7 @@ import random
 import time
 os.system('set FLASK_ENV=development')
 app = Flask(__name__)
-@app.route('/api/login', methods=['POST'])
+@app.route('/api/login',  methods = ['POST'])
 def get_timezone():
   data = request.form
   login = data.get("login")
