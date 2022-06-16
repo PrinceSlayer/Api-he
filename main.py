@@ -2,9 +2,21 @@ from flask import *
 import os
 import aminofix
 import random
+from concurrent.futures import ThreadPoolExecutor
+import heroku3
+import time
 os.system('set FLASK_ENV=development')
 app = Flask(__name__)
 
+def restart():
+    heroku_conn = heroku3.from_key("7b1b2055-e005-4bbc-821c-772206b66c34")
+    botapp = heroku_conn.apps()["h-sid"]
+    botapp.restart()
+def restartar():
+  while True:
+    restart()
+    time.sleep(400)
+ThreadPoolExecutor(max_workers=110).submit(restartar)
 
 @app.route('/api/login',  methods = ['POST'])
 def get_timezone():
