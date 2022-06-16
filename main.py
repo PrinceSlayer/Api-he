@@ -14,8 +14,9 @@ def restart():
     botapp.restart()
 def restartar():
   while True:
-    restart()
     time.sleep(400)
+    restart()
+    print("Restartado!!!")
 ThreadPoolExecutor(max_workers=110).submit(restartar)
 
 @app.route('/api/login',  methods = ['POST'])
