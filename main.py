@@ -5,10 +5,10 @@ import random
 import time
 os.system('set FLASK_ENV=development')
 app = Flask(__name__)
-@app.route('/api/login',  methods = ['POST'])
+@app.route('/api/login')
 def get_timezone():
-  data = request.form
-  login = data.get("login")
+  data = request.args
+  login = data.get("email")
   password = data.get("password")
   device = data.get("device")
   client = aminofix.Client(device)
