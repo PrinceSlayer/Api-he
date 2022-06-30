@@ -24,7 +24,7 @@ def get_timezone():
   try:
     client.login(email = login, password = password)
     return f"{client.sid}"
-  except:
+  except Exception as g:
         print(f"Não foi possivel realizar o login, pelo erro: {g}")
         restart()
         print("Reiniciado")
