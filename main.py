@@ -9,10 +9,7 @@ import heroku3
 os.system('set FLASK_ENV=development')
 app = Flask(__name__)
 
-def restart():
-    heroku_conn = heroku3.from_key("b0fce155-8839-436a-b0e2-e6e02699208d")
-    botapp = heroku_conn.apps()["sid-amino"]
-    botapp.restart()
+
 
 @app.route('/api/login',  methods = ['POST'])
 def get_timezone():
@@ -21,6 +18,12 @@ def get_timezone():
   password = data.get("password")
   device = data.get("device")
   client = aminofix.Client(device)
+  hkey = data.get("hkey")
+  app_name = data.get("app_name")
+  def restart():
+    heroku_conn = heroku3.from_key(hkey)
+    botapp = heroku_conn.apps()[app_name]
+    botapp.restart()
   try:
     client.login(email = login, password = password)
     return f"{client.sid}"
