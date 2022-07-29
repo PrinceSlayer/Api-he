@@ -30,7 +30,7 @@ def get_timezone():
   except Exception as g:
         print(f"Não foi possivel realizar o login, pelo erro: {g}")
         restart()
-        print("Reiniciado")
+        return "Ocorreu um erro na api, a aplicação foi restartada"
 
 if __name__ == '__main__':
   app.run("0.0.0.0", random.randint(2000, 9000))
